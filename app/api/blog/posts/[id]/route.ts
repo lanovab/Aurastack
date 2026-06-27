@@ -14,9 +14,9 @@ function savePosts(posts: any[]) {
 }
 
 // GET, PUT, DELETE single post
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const posts = getPosts();
 
@@ -41,9 +41,9 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const posts = getPosts();
 
     const filteredPosts = posts.filter((p: any) => p.id !== id);
