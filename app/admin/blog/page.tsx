@@ -17,7 +17,7 @@ interface BlogPost {
 
 export default function AdminBlog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
@@ -53,21 +53,11 @@ export default function AdminBlog() {
     }
   };
 
-  const fetchPosts = async () => {
-    try {
-      const response = await fetch('/api/blog/posts');
-      const data = await response.json();
-      setPosts(data || []);
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     if (isPasswordCorrect) {
-      fetchPosts();
+      // Load frontend-only blog posts here if needed
+      setPosts([]);
+      setLoading(false);
     }
   }, [isPasswordCorrect]);
 
@@ -75,46 +65,7 @@ export default function AdminBlog() {
     e.preventDefault();
 
     try {
-      if (editingId) {
-        // Update existing post
-        const response = await fetch(`/api/blog/posts/${editingId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        if (response.ok) {
-          fetchPosts();
-          setEditingId(null);
-          setShowForm(false);
-          setFormData({
-            title: '',
-            description: '',
-            content: '',
-            image: '',
-            category: 'AI & Automation',
-            author: 'Aura Stack',
-          });
-        }
-      } else {
-        // Create new post
-        const response = await fetch('/api/blog/posts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        if (response.ok) {
-          fetchPosts();
-          setShowForm(false);
-          setFormData({
-            title: '',
-            description: '',
-            content: '',
-            image: '',
-            category: 'AI & Automation',
-            author: 'Aura Stack',
-          });
-        }
-      }
+      console.warn('Backend blog post operations have been disabled. This frontend remains static.');
     } catch (error) {
       console.error('Error saving post:', error);
     }
@@ -134,14 +85,7 @@ export default function AdminBlog() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Are you sure you want to delete this post?')) {
-      try {
-        await fetch(`/api/blog/posts/${id}`, { method: 'DELETE' });
-        fetchPosts();
-      } catch (error) {
-        console.error('Error deleting post:', error);
-      }
-    }
+    alert('Backend delete functionality is disabled. This admin panel is now frontend-only.');
   };
 
   const handleCancel = () => {

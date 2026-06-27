@@ -1,40 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import Link from 'next/link';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  description: string;
-  content: string;
-  image: string;
-  date: string;
-  author: string;
-  category: string;
-}
+import { blogPosts, BlogPost } from '@/data/blog-posts';
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch('/api/blog/posts');
-        const data = await response.json();
-        setPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  const posts = blogPosts;
+  const loading = false;
 
   const containerVariants = {
     hidden: { opacity: 0 },
