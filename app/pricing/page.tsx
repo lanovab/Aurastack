@@ -100,254 +100,147 @@ export default function Pricing() {
     <main className="bg-black text-white overflow-hidden">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16 md:pb-20">
+      {/* Our Services Hero */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 md:pb-32">
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 opacity-40"
           style={{
-            background: 'radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0, 100, 255, 0.1) 0%, transparent 50%)',
+            background: 'radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(0, 100, 255, 0.08) 0%, transparent 50%)',
           }}
         />
 
         <div className="relative z-10 max-w-3xl w-full text-center flex flex-col items-center">
           <motion.div
-            variants={pageFlipVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ perspective: 1000 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 leading-tight"
-            >
-              Simple, Transparent{' '}
-              <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Pricing
-              </span>
-            </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 md:mb-8 leading-tight">
+              Our Services
+            </h1>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed text-center"
           >
-            Choose the perfect plan for your needs. Scale as you grow with flexible pricing options.
+            We build custom business automation, enterprise software, and strategic solutions to stabilize revenue, reduce risk, and scale operations.
           </motion.p>
-        </div>
-      </section>
 
-      {/* Pricing Cards */}
-      <section className="py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div className="max-w-7xl w-full">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8"
-          >
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                variants={rotatingCardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={`relative rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col ${
-                  plan.featured
-                    ? 'md:scale-105 border-2 border-cyan-400/50 bg-linear-to-br from-slate-800/80 via-slate-900/60 to-slate-950/80 shadow-2xl shadow-cyan-500/40'
-                    : 'border border-gray-700/60 bg-linear-to-br from-slate-900/50 via-slate-900/30 to-slate-950/50'
-                } backdrop-blur-xl hover:shadow-2xl hover:shadow-cyan-500/30 group`}
-                style={{ perspective: 1000 }}
-              >
-                {/* Gradient border effect */}
-                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 pointer-events-none" />
-
-                {plan.featured && (
-                  <div className="absolute top-0 left-0 right-0 flex items-center justify-center">
-                    <div className="bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 text-white px-6 py-2 text-xs font-bold rounded-b-2xl shadow-lg tracking-widest">
-                      ⭐ MOST POPULAR
-                    </div>
-                  </div>
-                )}
-
-                <div className="relative p-8 sm:p-10 flex flex-col h-full">
-                  <div className={`${plan.featured ? 'mt-6' : ''} text-center sm:text-left flex sm:block justify-center`}>
-                    <div className="inline-block mb-4">
-                      <span className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider ${
-                        plan.featured
-                          ? 'bg-cyan-500/30 text-cyan-200'
-                          : 'bg-gray-700/40 text-gray-300'
-                      }`}>
-                        {plan.name}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h3 className="text-3xl sm:text-4xl font-black mb-3 text-white text-center sm:text-left">{plan.name}</h3>
-                  <p className="text-gray-400 text-sm sm:text-base mb-8 leading-relaxed text-center sm:text-left">{plan.description}</p>
-
-                  {/* Price Section */}
-                  <div className="mb-8 pb-8 border-b border-gray-700/40 text-center sm:text-left">
-                    <div className="flex items-baseline gap-2 mb-2 justify-center sm:justify-start">
-                      <span className="text-6xl sm:text-7xl font-black bg-linear-to-r from-cyan-300 via-blue-400 to-purple-500 bg-clip-text text-transparent">${plan.price}</span>
-                      <span className="text-gray-400 text-lg">/year</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">Billed yearly • Cancel anytime</p>
-                  </div>
-
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`w-full py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mb-8 relative overflow-hidden group/btn ${
-                      plan.featured
-                        ? 'bg-linear-to-r from-cyan-400 to-blue-500 text-black shadow-lg shadow-cyan-500/60 hover:shadow-cyan-500/80 font-extrabold'
-                        : 'border-2 border-cyan-400/70 text-cyan-300 hover:border-cyan-400 hover:bg-cyan-400/15 font-semibold'
-                    }`}
-                  >
-                    <span className="relative z-10">{plan.cta}</span>
-                    {plan.featured && (
-                      <div className="absolute inset-0 bg-linear-to-r from-cyan-300 to-blue-600 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300" />
-                    )}
-                  </motion.button>
-
-                  {/* Features */}
-                  <div className="grow">
-                    <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-6 text-center sm:text-left">What&apos;s included:</p>
-                    <ul className="space-y-4">
-                      {plan.features.map((feature, featureIndex) => (
-                        <motion.li
-                          key={featureIndex}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: featureIndex * 0.06 }}
-                          viewport={{ once: true }}
-                          className="flex items-start gap-3 group/feature justify-center sm:justify-start"
-                        >
-                          <div className="shrink-0 mt-1">
-                            <svg className="w-5 h-5 text-cyan-400 transition-transform duration-300 group-hover/feature:scale-110" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-sm sm:text-base text-gray-300 leading-relaxed">{feature}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
+          <div className="w-full space-y-16 pt-10">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="w-full max-w-5xl rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-5 sm:p-7 md:p-8 shadow-2xl shadow-cyan-500/10"
+            >
+            <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] items-center">
+              <img
+                src="/whatapp%20ai%20agent.jpeg"
+                alt="WhatsApp AI agent chatbot for business"
+                className="w-full h-full object-cover rounded-2xl border border-cyan-400/20"
+              />
+              <div className="text-left">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300 mb-3">WhatsApp AI Agent</p>
+                <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white">WhatsApp 24 hrs Support Assistant Agents</h2>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
+                  We build WhatsApp AI agent chatbots for businesses and organizations that can communicate in both Swahili and English, even mixing languages naturally based on the customer&apos;s needs. They can think, know when to escalate to a human, negotiate, and understand human psychology and negotiation.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-200">Swahili & English</span>
+                  <span className="rounded-full border border-fuchsia-400/30 bg-fuchsia-400/10 px-3 py-1 text-sm text-fuchsia-200">Human escalation</span>
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">Negotiation-ready</span>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Spacing Divider */}
-      <div className="h-32 sm:h-40 md:h-48 lg:h-56 bg-linear-to-b from-black via-slate-950/30 to-black" />
-
-      {/* FAQ Section */}
-      <section className="py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 border-t border-gray-800/50 flex justify-center">
-        <div className="max-w-4xl w-full">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 sm:mb-20 md:mb-24"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="w-full max-w-5xl rounded-3xl border border-fuchsia-500/20 bg-slate-900/70 p-5 sm:p-7 md:p-8 shadow-2xl shadow-fuchsia-500/10 mt-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black mb-4 sm:mb-6">
-              Pricing{' '}
-              <span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                FAQs
-              </span>
-            </h2>
+            <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] items-center">
+              <img
+                src="/bussiness%20whatapp%20ai.png"
+                alt="Business WhatsApp AI agent for customer engagement"
+                className="w-full h-full object-cover rounded-2xl border border-fuchsia-400/20"
+              />
+              <div className="text-left">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-fuchsia-300 mb-3">Business AI</p>
+                <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white">Never miss customers because of late replies</h2>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
+                  We train the AI about your business and let it handle the heavy lifting. It responds with human-like intuition, understands Swahili and English, and can act like your sales person with no sick days, no coffee breaks, and 24/7 support whether you are online or offline.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="rounded-full border border-fuchsia-400/30 bg-fuchsia-400/10 px-3 py-1 text-sm text-fuchsia-200">Business-trained AI</span>
+                  <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-200">24/7 support</span>
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">Human-like replies</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          <div className="space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-32">{[
-              {
-                q: 'Can I change my plan anytime?',
-                a: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.',
-              },
-              {
-                q: 'Is there a free trial available?',
-                a: 'Yes! We offer a 14-day free trial on all plans. No credit card required to get started.',
-              },
-              {
-                q: 'What payment methods do you accept?',
-                a: 'We accept all major credit cards, PayPal, bank transfers, and various international payment methods for your convenience.',
-              },
-              {
-                q: 'Do you offer refunds?',
-                a: 'We offer a 30-day money-back guarantee if you\'re not satisfied with our service. No questions asked.',
-              },
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-8 sm:p-12 rounded-2xl border border-gray-600/40 bg-linear-to-br from-slate-900/60 via-slate-900/40 to-slate-950/60 backdrop-blur-lg hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
-              >
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-5">{faq.q}</h3>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="w-full max-w-5xl rounded-3xl border border-amber-500/20 bg-slate-900/70 p-5 sm:p-7 md:p-8 shadow-2xl shadow-amber-500/10 mt-16"
+          >
+            <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] items-center">
+              <img
+                src="/appointment%20reminder.png"
+                alt="AI appointment reminder assistant"
+                className="w-full h-full object-cover rounded-2xl border border-amber-400/20"
+              />
+              <div className="text-left">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300 mb-3">Voice Caller Assistant</p>
+                <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white">AI appointment reminder and follow-up assistant</h2>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
+                  We develop AI voice agents that are trained with your appointment schedules, business operations, and client context. They call at the right time to remind you and your clients about upcoming meetings, including the venue, the person involved, and the purpose of the appointment. They can also confirm attendance, follow up professionally, and only proceed after your approval.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-sm text-amber-200">Appointment reminders</span>
+                  <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-200">Venue & contact awareness</span>
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">Human-approved follow-ups</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
           </div>
-        </div>
-      </section>
 
-      {/* Spacing Divider */}
-      <div className="h-32 sm:h-40 md:h-48 lg:h-56 bg-linear-to-b from-black via-slate-950/30 to-black" />
-
-      {/* CTA Section */}
-      <section className="py-24 sm:py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div className="max-w-4xl w-full text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8"
-          >
-            Ready to get started?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-gray-300 text-lg sm:text-xl mb-8 sm:mb-10"
-          >
-            Join thousands of companies using Aura Stack
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a href="https://wa.me/254713095009?text=Hello!%20I%20would%20like%20to%20start%20a%20free%20trial%20with%20Aura%20Stack." target="_blank" rel="noopener noreferrer">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 sm:px-10 py-4 sm:py-5 bg-linear-to-r from-cyan-400 to-blue-500 text-black font-bold rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/70"
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full mt-6">
+            {[
+              { title: 'Business Automation', desc: 'Streamline workflows, reduce manual effort, and improve accuracy.' },
+              { title: 'Custom Software', desc: 'Tailored systems built to match your unique business processes.' },
+              { title: 'Revenue Stabilization', desc: 'Strategies and tools to smooth cashflow and reduce volatility.' },
+              { title: 'Consulting & Strategy', desc: 'Product and operational guidance to maximize ROI.' },
+            ].map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.12 * i, duration: 0.5 }}
+                className="p-6 rounded-2xl border border-gray-800/40 bg-linear-to-br from-slate-900/60 to-slate-950/60"
               >
-                Start Free Trial
+                <h3 className="text-xl font-bold mb-2">{s.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div className="mt-10 flex gap-4">
+            <a href="https://wa.me/254713095009?text=Hello!%20I%20would%20like%20to%20learn%20more%20about%20Aura%20Stack%20services." target="_blank" rel="noopener noreferrer">
+              <motion.button whileHover={{ scale: 1.03 }} className="px-6 py-3 bg-linear-to-r from-cyan-400 to-blue-500 text-black font-bold rounded-xl">
+                Contact Us
               </motion.button>
             </a>
-            <a href="https://wa.me/254713095009?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20Aura%20Stack%20services." target="_blank" rel="noopener noreferrer">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 sm:px-10 py-4 sm:py-5 border-2 border-cyan-400 text-cyan-400 font-bold rounded-xl hover:bg-cyan-400/10 transition-all duration-300"
-              >
-                Contact Sales
+            <a href="/contact">
+              <motion.button whileHover={{ scale: 1.03 }} className="px-6 py-3 border-2 border-cyan-400 text-cyan-300 rounded-xl">
+                Learn More
               </motion.button>
             </a>
           </motion.div>

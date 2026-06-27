@@ -26,7 +26,7 @@ export const Navigation = () => {
     { label: 'Cashflow', href: '/cashflow-stabilization', icon: '💹' },
     { label: 'AI Tech News', href: '/blog', icon: '📰' },
     { label: 'About Us', href: '/about', icon: '👥' },
-    { label: 'Pricing', href: '/pricing', icon: '💰' },
+    { label: 'Our Services', href: '/services', icon: '💰' },
     { label: 'Contact', href: '/contact', icon: '✉️' },
   ];
 

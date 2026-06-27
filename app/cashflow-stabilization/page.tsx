@@ -124,7 +124,7 @@ export default function CashflowStabilizationPage() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-base sm:text-lg text-gray-400 max-w-2xl mb-8 sm:mb-12 text-center mx-auto"
             >
-           
+              Our cashflow stabilization system is available at only Ksh 25,000 per month, with a one-time installation fee of Ksh 2,000,000. You pay just Ksh 25,000 per month for five years.
             </motion.p>
 
             <motion.button
