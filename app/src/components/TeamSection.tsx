@@ -240,7 +240,6 @@ export const TeamSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl">
             {teamMembers.map((member, index) => {
               const colors = colorGradients[member.color as keyof typeof colorGradients];
-              const isCEO = member.isCEO || false;
               
               return (
                 <motion.div
