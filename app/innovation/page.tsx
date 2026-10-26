@@ -181,14 +181,14 @@ export default function InnovationPage() {
             {/* Founder Card */}
             <motion.div
               {...fadeInUp}
-              className="bg-black text-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow-lg border border-cyan-400/30 h-full flex flex-col justify-between"
+              className="order-2 bg-black text-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow-lg border border-cyan-400/30 h-full flex flex-col justify-between"
             >
               <div className="flex-1"></div>
               
               <div className="relative w-full aspect-square mb-6 sm:mb-8 rounded-lg overflow-hidden bg-gray-800">
                 <Image
                   src="/mafiathon.png"
-                  alt="Founder - Lanova Kevin Koome"
+                  alt="Founder and Chief Technology Officer Lanova Kevin Koome"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
@@ -199,7 +199,7 @@ export default function InnovationPage() {
               <h5 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center">Lanova Kevin Koome</h5>
               
               <div className="text-center mb-4 sm:mb-6">
-                <h4 className="text-lg sm:text-xl font-bold text-cyan-400 uppercase tracking-wide">Founder & Visionary</h4>
+                <h4 className="text-lg sm:text-xl font-bold text-cyan-400 uppercase tracking-wide">Founder & Chief Technology Officer</h4>
               </div>
               
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 sm:mb-8 text-center font-normal tracking-wide flex-1">
@@ -209,7 +209,7 @@ export default function InnovationPage() {
 
               <div className="border-t border-cyan-400/50 pt-5 sm:pt-6 mt-auto">
                 <p className="text-xs uppercase tracking-wider text-cyan-300 font-bold mb-2 sm:mb-3 text-center">Leadership Role</p>
-                <p className="text-base sm:text-lg font-semibold text-center">Founder & CEO</p>
+                <p className="text-base sm:text-lg font-semibold text-center">Founder & Chief Technology Officer</p>
                 <p className="text-xs sm:text-sm text-gray-400 text-center">Aura  stack Kenya</p>
               </div>
             </motion.div>
@@ -217,7 +217,7 @@ export default function InnovationPage() {
             {/* Investor Message Card */}
             <motion.div
               {...fadeInUp}
-              className="bg-black text-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow-lg border border-cyan-400/50 h-full flex flex-col justify-between"
+              className="order-3 bg-black text-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow-lg border border-cyan-400/50 h-full flex flex-col justify-between"
             >
               <div className="flex-1 flex flex-col justify-end mb-6 sm:mb-8">
                 <div className="text-center">
@@ -260,12 +260,12 @@ export default function InnovationPage() {
             {/* Executive Leadership Card */}
             <motion.div
               {...fadeInUp}
-              className="bg-linear-to-br from-cyan-100 to-blue-100 p-6 sm:p-8 rounded-lg sm:rounded-xl border-2 border-cyan-400 shadow-lg h-full flex flex-col justify-between"
+              className="order-1 bg-linear-to-br from-cyan-100 to-blue-100 p-6 sm:p-8 rounded-lg sm:rounded-xl border-2 border-cyan-400 shadow-lg h-full flex flex-col justify-between"
             >
               <div className="relative w-full aspect-square mb-6 sm:mb-8 rounded-lg overflow-hidden bg-gray-800 flex-1">
                 <Image
-                  src="/kevoh billionaire.jpeg"
-                  alt="Chief Executive Officer"
+                  src="/aura%20stack%20pres.png"
+                  alt="Virginia Mimi, President and CEO of Aura Stack"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
@@ -273,10 +273,10 @@ export default function InnovationPage() {
                 />
               </div>
 
-              <h5 className="text-lg sm:text-xl font-bold text-black mb-3 sm:mb-4 text-center">Leadership Excellence</h5>
+              <h5 className="text-lg sm:text-xl font-bold text-black mb-3 sm:mb-4 text-center">Virginia Mimi</h5>
               
               <div className="text-center mb-4 sm:mb-6">
-                <h4 className="text-lg sm:text-xl font-bold text-black uppercase tracking-wide">Executive Leadership</h4>
+                <h4 className="text-lg sm:text-xl font-bold text-black uppercase tracking-wide">President & CEO</h4>
               </div>
               
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-center font-normal tracking-wide">

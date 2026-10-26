@@ -93,7 +93,7 @@ export default function Blog() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="flex items-center gap-3"
               >
-                <span className="text-cyan-400 text-sm font-bold">Featuring CEO Lanova</span>
+                <span className="text-cyan-400 text-sm font-bold">Featuring CTO Lanova</span>
                 <div className="h-1 w-12 bg-linear-to-r from-cyan-400 to-blue-500 rounded-full" />
               </motion.div>
             </motion.div>
